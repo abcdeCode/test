@@ -26,10 +26,11 @@ public class DemoController {
     public String test3() {
         return "this is test3";
     }
+
     @GetMapping("/test4")
     public String test4() {
-        int i=1;
-        if(i==1){
+        int i = 1;
+        if (i == 1) {
             return "this is true";
         }
         return "this is false";
