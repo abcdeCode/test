@@ -13,8 +13,8 @@ import java.util.Random;
  * @author songhaoming
  */
 @RestController
-@RequestMapping("/pro")
-public class DemoController {
+@RequestMapping("/pro2")
+public class TestController {
 
     @GetMapping("/test1")
     public String test1() {
@@ -42,10 +42,6 @@ public class DemoController {
      */
     @GetMapping("/test4")
     public Object test4(String page, String size) {
-        return getObject(page, size);
-    }
-
-    static Object getObject(String page, String size) {
         Map<String, String> map = new HashMap<>(16);
         if ("".equals(page) || "".equals(size)) {
             return "参数不能为空";
