@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 /**
  * @author songhaoming
  */
@@ -24,16 +28,26 @@ public class DemoController {
 
     @GetMapping("/test3")
     public String test3() {
-        return "this is test3";
+        int count = 0;
+        Random random=new Random();
+        int num = random.nextInt();
+        for (int i = 0; i < 10; i++) {
+            count += num;
+        }
+        return "this is test3 " + count;
     }
 
+    //http://localhost:8081/pro/test4?page=1&size=6
     @GetMapping("/test4")
-    public String test4() {
-        int i = 1;
-        if (i == 1) {
-            return "this is true";
+    public Object test4(String page, String size) {
+        Map<String, String> map = new HashMap<>(16);
+        if ("".equals(page) || "".equals(size)) {
+            return "参数不能为空";
+        } else {
+            map.put("page", page);
+            map.put("size", size);
+            return map;
         }
-        return "this is false";
     }
 }
 
